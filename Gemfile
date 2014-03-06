@@ -35,6 +35,7 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -42,13 +43,29 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
+group :development do
+  # dev environment variables
+  gem "figaro"
+end
+gem 'foreman'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# facebook user authentication
+gem 'devise'
+
+# required for heroku
+gem 'rails_12factor', group: :production
+
+# facebook graph api
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# facebook graph api
+gem "koala"
 
+# for heroku
+ruby '2.0.0'
 
 
 

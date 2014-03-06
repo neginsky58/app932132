@@ -43,9 +43,11 @@ gem 'bcrypt'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-group :development do
+group :development, :test do
   # dev environment variables
-  gem "figaro"
+  # gem "figaro"
+  gem 'dotenv-rails'
+
 end
 gem 'foreman'
 # Use debugger

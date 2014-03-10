@@ -11,7 +11,7 @@ class CreateCompanies < ActiveRecord::Migration
       t.string    :hours
       t.string    :phone
       t.integer   :rating
-
+      t.boolean   :is_active
       t.timestamps
     end
   end

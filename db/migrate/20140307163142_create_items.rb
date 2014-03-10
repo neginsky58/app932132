@@ -8,10 +8,8 @@ class CreateItems < ActiveRecord::Migration
       t.decimal   :price, :precision => 10, :scale => 2
       t.string    :currency
       t.integer   :condition_id
-      t.boolean   :is_negotiable
-      t.integer   :category_id
+      t.boolean   :is_negotiable      
       t.string    :link
-
 
       t.timestamps
     end

@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 20140310052930) do
     t.string   "currency"
     t.integer  "condition_id"
     t.boolean  "is_negotiable"
-    t.integer  "category_id"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -149,6 +148,7 @@ ActiveRecord::Schema.define(version: 20140310052930) do
     t.decimal  "min_price",              precision: 10, scale: 2
     t.integer  "min_condition"
     t.string   "banned_reason"
+    t.boolean  "is_locked"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.integer  "user_group_id",                                   default: 4

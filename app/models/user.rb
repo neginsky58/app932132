@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user = User.where(:provider => auth.provider, :facebook_id => auth.uid).first
     
     if user && user.oauth_token.nil?
       user.update(oauth_token: auth.credentials.token, 
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     elsif !user
       user = User.create(name:auth.extra.raw_info.name,
                            provider:auth.provider,
-                           uid:auth.uid,
+                           facebook_id:auth.uid,
                            email:auth.info.email,
                            oauth_token: auth.credentials.token,
                            oauth_expires_at: Time.at(auth.credentials.expires_at),
@@ -26,12 +26,12 @@ class User < ActiveRecord::Base
     user
   end  
   def self.find_or_create_by_uid(uid, params)
-    user = User.where(provider: 'facebook', uid: uid.to_s).first
+    user = User.where(provider: 'facebook', facebook_id: uid.to_s).first
     unless user
       user = User.create(  name: params[:name],
                            provider: 'facebook',
-                           uid: uid.to_s,
-                           email: "#{uid.to_s}@fb.com",
+                           facebook_id: facebook_id.to_s,
+                           email: "#{facebook_id.to_s}@fb.com",
                            password: Devise.friendly_token[0,20]
                         )
     end

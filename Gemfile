@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -49,6 +49,10 @@ group :development, :test do
   gem 'dotenv-rails'
 
 end
+
+gem 'ember-rails'
+gem 'ember-source', '1.2.0' # or the version you need
+
 gem 'foreman'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
@@ -65,6 +69,12 @@ gem 'omniauth-facebook'
 
 # facebook graph api
 gem "koala"
+
+
+
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+
+gem 'thin'
 
 # for heroku
 ruby '2.0.0'

@@ -14,8 +14,10 @@ Binbuds::Application.routes.draw do
 
   resources :products
   resources :items
-  
+  resources :users
   root 'products#index'
+
+  get 'friends' => 'users#friends'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

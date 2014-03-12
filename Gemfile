@@ -70,8 +70,6 @@ gem 'omniauth-facebook'
 # facebook graph api
 gem "koala"
 
-
-
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'thin'

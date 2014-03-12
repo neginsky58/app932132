@@ -7,5 +7,4 @@ class UsersController < ApplicationController
     @friends = current_user.friends.map{|f| f[:picture] = f['picture']['data']['url']; f}
   end
 
-
 end

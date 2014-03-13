@@ -1,13 +1,12 @@
-<div class="row">
-  <h1>Friends</h1>
+  <div class="page-header">
+    <h3>Friends</h3>
+  </div>
 
   <% @friends.each do |friend| %>
-    <div class="col-xs-6 col-md-3">
+    <div class="col-md-3">            
       <a href="#" class="thumbnail">
-        <img src="<%= friend[:picture] %>" alt="<%= friend['name'] %>" width="100" height="100" >
-      </a>
+        <img src="<%= friend[:picture] %>" alt="<%= friend['name'] %>" width="100" height="100" >        
+        <%= friend['name'] %>
+      </a>      
     </div>
-
   <% end %>
-
-</div>

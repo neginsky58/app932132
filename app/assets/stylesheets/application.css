@@ -17,10 +17,19 @@
 header {
   margin: 10px 0;
 }
-.left-content, .right-content {
+.left-content{
   border: 1px solid #eeeeee;
   border-radius: 4px;
   min-height: 400px !important;
+}
+.block-watchlist, .block-watchlist {
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  height: 350px;
+}
+.block-watchlist .btn {
+  margin:1px 0;
 }
 .block-attribute-list {
 
@@ -31,3 +40,20 @@ header {
 .block-attribute-list {
   margin-bottom: 30px;
 }
+
+.block-watchlist-action {
+  position: absolute !important;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+
+
+
+
+
+
+
+
+
+

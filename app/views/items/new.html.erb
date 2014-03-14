@@ -1,0 +1,144 @@
+<div class="post-page">
+  <div class="page-header">
+    <h3 >Post New Item</h3>
+  </div>
+
+  <form class="form-horizontal" role="form">
+    <div class="col-md-4">
+      <div class="col-md-12 thumbnail">
+        <%= image_tag 'items/no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
+      </div>
+      <div class="col-md-4 thumbnail">
+        <%= image_tag 'items/no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
+      </div>
+      <div class="col-md-4 thumbnail">
+        <%= image_tag 'items/no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
+      </div>
+      <div class="col-md-4 thumbnail">
+        <%= image_tag 'items/no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
+      </div>
+      <a class="btn btn-default col-md-12">Upload Photo</a>   
+    </div>
+    <div class="col-md-8">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="control-label" for="search_word">Item Name</label>
+        </div>
+      </div>
+      <div class="col-md-8">    
+        <div class="form-group">    
+          <input id="item_name" class="form-control" type="text" placeholder="">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="control-label" for="description">Description</label>
+        </div>
+      </div>      
+      <div class="col-md-12">        
+        <div class="form-group">
+          <textarea id="description" class="form-control" rows="6" type="text" placeholder=""></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-md-4">          
+            <label class="control-label">Price:</label>          
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" value="$50.00" />
+          </div>
+          <div class="col-md-4">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Negotiable
+              </label>
+            </div>        
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="control-label" for="search_word">Conditions</label>
+        </div>
+      </div>
+      <div class="col-md-8">    
+        <div class="form-group">    
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+              Unboxed/New
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+              Like New Condition
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+              Gently Used
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+              Well Used & Working
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Categories -->
+    
+    <div class="form-group">    
+      <div class="col-md-12">
+        <label class="control-label">Category</label>
+      </div>        
+    </div>
+    <div class="form-group"> 
+      <div class="col-md-4">
+        <select class="form-control">
+          <option>Clothings</option>
+          <option>Electronics</option>
+          <option>Garden Supplies</option>
+          <option>Household Goods</option>
+          <option>Toys</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <select class="form-control">
+          <option>Womens</option>
+          <option>Men's</option>
+          <option>Kids - Girls</option>
+          <option>Kids - Boys</option>
+          <option>Unisex</option>
+        </select>
+      </div>
+      <div class="col-md-4">        
+        <select class="form-control">
+          <option>Sizes</option>
+          <option>0-2</option>
+          <option>4-6</option>
+          <option>8-12</option>
+          <option>14-18</option>
+          <option>20+</option>
+        </select>        
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-md-4">
+        <label class="control-label">Manufacture link</label>
+      </div>
+      <div class="col-md-8">
+        <input type="text" class="form-control" />
+      </div>
+    </div>
+
+  </form>
+</div>

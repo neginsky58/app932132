@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310052930) do
+ActiveRecord::Schema.define(version: 20140316163516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.integer  "permission"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -87,6 +95,11 @@ ActiveRecord::Schema.define(version: 20140310052930) do
     t.datetime "updated_at"
   end
 
+  create_table "payments", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "person_types", force: true do |t|
     t.string   "name"
     t.string   "desc"
@@ -119,6 +132,13 @@ ActiveRecord::Schema.define(version: 20140310052930) do
 
   create_table "user_groups", force: true do |t|
     t.integer  "value"
+    t.string   "name"
+    t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_plans", force: true do |t|
     t.string   "name"
     t.string   "desc"
     t.datetime "created_at"

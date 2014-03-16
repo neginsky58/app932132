@@ -70,6 +70,9 @@ gem 'omniauth-facebook'
 # facebook graph api
 gem "koala"
 
+# Google Map api
+gem 'gmaps4rails'
+
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'thin'

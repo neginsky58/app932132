@@ -6,6 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Create Admin User
+
+Admin.find_or_create_by_username(username: 'admin', password: 'admin')
+Admin.find_or_create_by_username(username: 'admin1', password: 'admin1')
+Admin.find_or_create_by_username(username: 'admin2', password: 'admin2')
+
+
+
 # Create UserGroup 
 UserGroup.find_or_create_by_value(value: 1, name: 'SUPER ADMIN', desc: 'SUPER ADMIN')
 UserGroup.find_or_create_by_value(value: 2, name: 'GENERAL ADMIN', desc: 'GENERAL ADMIN')

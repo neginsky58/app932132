@@ -16,10 +16,16 @@ Binbuds::Application.routes.draw do
   resources :items
   resources :users
 
-  root 'products#index'
+  root 'items#index'
 
   get '/friends'    => 'users#friends'
   get '/settings'   => 'users#settings', as: 'settings'
+
+  
+  get 'login' => 'admin#login', :constraints => { :subdomain => /.+/ }
+  post 'login' => 'admin#login', :constraints => { :subdomain => /.+/ }
+  
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

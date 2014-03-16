@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Binbuds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">if (window.location.hash == '#_=_')window.location.hash = '';</script>
+
+</head>
+<body>
+  
+  <header>
+    <div class="container">      
+      <a href="#"> BinBuds </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">      
+      <div class="col-md-12">
+        <%= yield %>
+      </div>
+    </div>
+  </div>  
+  <%= render "shared/footer" %>
+
+</body>
+</html>
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : <%= ENV["FACEBOOK_ID"] %>,
+      status     : true,
+      xfbml      : true
+    });
+  };  
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+</script> 

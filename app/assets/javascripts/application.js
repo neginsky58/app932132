@@ -15,6 +15,9 @@
 
 //= require bootstrap
 
+//= require underscore
+//= require gmaps/google
+
 // require handlebars
 // require ember
 // require ember-data

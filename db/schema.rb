@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 20140316163516) do
   end
 
   create_table "circles", force: true do |t|
+    t.string   "name"
     t.string   "zipcode"
-    t.integer  "radius"
-    t.integer  "location_x"
-    t.integer  "location_y"
+    t.string   "city"
+    t.string   "state"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

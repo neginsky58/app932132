@@ -76,6 +76,9 @@ gem 'gmaps4rails'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'thin'
+gem 'underscore-rails'
+gem 'simple_form'
+
 
 # for heroku
 ruby '2.0.0'

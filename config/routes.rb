@@ -15,6 +15,13 @@ Binbuds::Application.routes.draw do
   resources :products
   resources :items
   resources :users
+  resources :admin, as: 'admins' do 
+    collection do
+      get 'users'
+      get 'circles'
+      get 'settings'
+    end
+  end
 
   root 'items#index'
 
@@ -22,8 +29,7 @@ Binbuds::Application.routes.draw do
   get '/settings'   => 'users#settings', as: 'settings'
 
   
-  get 'login' => 'admin#login', :constraints => { :subdomain => /.+/ }
-  post 'login' => 'admin#login', :constraints => { :subdomain => /.+/ }
+  get 'login' => 'admin#new', :constraints => { :subdomain => 'admin' }  
   
 
 

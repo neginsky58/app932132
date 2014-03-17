@@ -5,8 +5,13 @@ class AdminController < ApplicationController
     @admin = Admin.new    
     
     respond_to do |format|
-      format.html { render layout: "admin_login" }
-      format.json { render json: @admin }
+      if current_admin_user
+        format.html { redirect_to users_admins_url }
+        format.json { render json: 'success' }
+      else
+        format.html { render layout: "admin_login" }
+        format.json { render json: @admin }
+      end
     end    
   end
 
@@ -30,6 +35,7 @@ class AdminController < ApplicationController
   end
 
   def users
+
     @users = User.all
     respond_to do |format|
       format.html { render :layout => 'admin' }
@@ -39,10 +45,15 @@ class AdminController < ApplicationController
 
   def circles
   end
+
   def settings
   end
+
   def index
   end
 
+  def current_admin_user
+    return session[:admin_user]    
+  end
 
 end

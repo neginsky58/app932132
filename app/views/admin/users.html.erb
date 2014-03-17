@@ -1,3 +1,50 @@
 <h3>All Users</h3>
 
-<pre><%= @users.inspect %></pre>
+<form role="search" class="navbar-form navbar-left">
+  <div class="form-group">
+    <input type="text" placeholder="Search" class="form-control">
+  </div>
+  <button class="btn btn-default" type="submit">Search</button>  
+</form>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>FBname</th>
+      <th>Referal</th>
+      <th>Paid</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>David Galante</td>
+      <td>dggalante</td>
+      <td>test ref</td>
+      <td>Paid</td>
+      <td>Active</td>
+      <td><input type="checkbox" /></td>
+    </tr>
+    <tr>
+      <td>Yevgeny Neginsky</td>
+      <td>dggalante</td>
+      <td>test ref</td>
+      <td>Paid</td>
+      <td>Active</td>
+      <td><input type="checkbox" /></td>
+    </tr>
+  </tbody>
+</table>
+<h3>User Details</h3>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Info</a></li>
+  <li><a href="#">Items</a></li>
+  <li><a href="#">Messages</a></li>
+  <li><a href="#">Preferences</a></li>
+  <li><a href="#">Circles</a></li>
+</ul>
+<%= render 'user_details' %>
+
+
+

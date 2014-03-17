@@ -6,6 +6,13 @@ Binbuds::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_session
   end  
 
+  constraints(host: /^admin\./i) do
+    get '/login' => 'admin#new'
+    get '/admin-users' => 'admin#users'
+    # get '(*any)' => redirect { |params, request|
+    #   URI.parse(request.url).tap { |uri| uri.host.sub!(/^admin\./i, '') }.to_s
+    # }    
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -29,9 +36,6 @@ Binbuds::Application.routes.draw do
   get '/settings'   => 'users#settings', as: 'settings'
 
   
-  get 'login' => 'admin#new', :constraints => { :subdomain => 'admin' }  
-  
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

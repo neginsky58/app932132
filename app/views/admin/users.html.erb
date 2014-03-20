@@ -6,11 +6,11 @@
   </div>
   <button class="btn btn-default" type="submit">Search</button>  
 </form>
-<table class="table table-hover table-bordered">
-  <thead>
+<table class="table table-hover   table-bordered">
+  <thead>    
     <tr>
       <th>User Name</th>
-      <th>FBname</th>
+      <th>Email</th>
       <th>Referal</th>
       <th>Paid</th>
       <th>Status</th>
@@ -18,24 +18,19 @@
     </tr>
   </thead>
   <tbody>
+    <% @users.each do |user| %>
     <tr>
-      <td>David Galante</td>
-      <td>dggalante</td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
       <td>test ref</td>
       <td>Paid</td>
       <td>Active</td>
       <td><input type="checkbox" /></td>
     </tr>
-    <tr>
-      <td>Yevgeny Neginsky</td>
-      <td>dggalante</td>
-      <td>test ref</td>
-      <td>Paid</td>
-      <td>Active</td>
-      <td><input type="checkbox" /></td>
-    </tr>
+    <% end %>    
   </tbody>
 </table>
+
 <h3>User Details</h3>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#">Info</a></li>
@@ -44,7 +39,7 @@
   <li><a href="#">Preferences</a></li>
   <li><a href="#">Circles</a></li>
 </ul>
-<%= render 'user_details' %>
+<%= render 'user_details_info' %>
 
 
 

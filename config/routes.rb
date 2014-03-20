@@ -8,10 +8,16 @@ Binbuds::Application.routes.draw do
 
   constraints(host: /^admin\./i) do
     get '/login' => 'admin#new'
-    get '/admin-users' => 'admin#users'
+    get '/all-users' => 'admin#users', as: 'admin_all_users'
+    get '/all-circles' => 'admin#circles', as: 'admin_all_circles'
+    get '/settings' => 'admin#settings', as: 'admin_settings'
+    get '/new_circle' => 'admin#new_circle', as: 'admin_new_circle'
+    post '/create_circle' => 'admin#create_circle', as: 'admin_create_circle'
+
     # get '(*any)' => redirect { |params, request|
     #   URI.parse(request.url).tap { |uri| uri.host.sub!(/^admin\./i, '') }.to_s
-    # }    
+    # }
+    resources :circles    
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -22,18 +28,13 @@ Binbuds::Application.routes.draw do
   resources :products
   resources :items
   resources :users
-  resources :admin, as: 'admins' do 
-    collection do
-      get 'users'
-      get 'circles'
-      get 'settings'
-    end
-  end
+  resources :admin
 
   root 'items#index'
 
   get '/friends'    => 'users#friends'
   get '/settings'   => 'users#settings', as: 'settings'
+
 
   
 

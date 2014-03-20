@@ -1,0 +1,24 @@
+<table class="table table-hover   table-bordered">
+  <thead>
+    <tr>
+      <th>Circle Name</th>
+      <th>Zip</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @circles.each do |circle| %>
+    <tr>
+      <td><%= circle.name %></td>
+      <td><%= circle.zipcode %></td>
+      <td><%= circle.city %></td>
+      <td><%= circle.state %></td>
+      <td><%= circle.status %></td>
+      <td><input type="checkbox"/></td>
+    </tr>
+    <% end %>    
+  </tbody>
+</table>

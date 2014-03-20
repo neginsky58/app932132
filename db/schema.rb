@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20140316163516) do
   end
 
   create_table "categories", force: true do |t|
+    t.string   "name"
+    t.string   "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,14 +36,7 @@ ActiveRecord::Schema.define(version: 20140316163516) do
     t.string   "zipcode"
     t.string   "city"
     t.string   "state"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "clothings", force: true do |t|
-    t.string   "name"
-    t.string   "desc"
+    t.boolean  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -85,12 +80,15 @@ ActiveRecord::Schema.define(version: 20140316163516) do
 
   create_table "items", force: true do |t|
     t.string   "name"
-    t.string   "desc"
+    t.text     "desc"
     t.integer  "item_state_id"
-    t.decimal  "price",         precision: 10, scale: 2
+    t.decimal  "price",          precision: 10, scale: 2
     t.string   "currency"
     t.integer  "condition_id"
     t.boolean  "is_negotiable"
+    t.integer  "category_id"
+    t.integer  "person_type_id"
+    t.integer  "size_id"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,1 +1,52 @@
 <h3>Circles</h3>
+
+<form role="search" class="navbar-form navbar-left">
+  <div class="form-group">
+    <input type="text" placeholder="Search" class="form-control">
+  </div>
+  <button class="btn btn-default" type="submit">Search</button>
+
+  <button class="btn btn-default pull-right" type="submit">Create Circle</button>
+</form>
+<table class="table table-hover   table-bordered">
+  <thead>
+    <tr>
+      <th>Circle Name</th>
+      <th>Zip</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Indi Marketplace</td>
+      <td>46003</td>
+      <td>Westfield</td>
+      <td>In</td>
+      <td>Active</td>
+      <td><input type="checkbox"/></td>
+    </tr>
+    <tr>
+      <td>Schamu Marketplace</td>
+      <td>60074</td>
+      <td>Palatine</td>
+      <td>IL</td>
+      <td>Request</td>
+      <td><input type="checkbox" /></td>
+    </tr>
+  </tbody>
+</table>
+<h3>User Details</h3>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Info</a></li>
+  <li><a href="#">Items</a></li>
+  <li><a href="#">Messages</a></li>
+  <li><a href="#">Preferences</a></li>
+  <li><a href="#">Circles</a></li>
+</ul>
+<%= render 'circle_details_info' %>
+
+
+

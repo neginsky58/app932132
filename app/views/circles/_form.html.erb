@@ -1,0 +1,25 @@
+<%= form_for(@circle, class: 'form-horizontal') do |f| %>
+  <div class="form-group">
+    <label class="control-label">Name</label>
+    <%= f.text_field :name, :class=> 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Zip</label>
+    <%= f.text_field :zipcode, :class=> 'form-control' %>
+  </div>  
+  <div class="form-group">
+    <label class="control-label">City</label>
+    <%= f.text_field :city, :class=> 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label class="control-label">State</label>
+    <%= f.text_field :state, :class=> 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Status</label>
+    <%= @circle.status %>
+    <%= f.select :status, options_for_select({'Active'=>'true', 'Disabled'=>'false' }, :selected => @circle.status), {}, { :class => 'form-control'} %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn btn-default' %>  
+
+<% end %>

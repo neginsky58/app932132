@@ -24,10 +24,11 @@ UserGroup.find_or_create_by_value(value: 6, name: 'BANNED USER', desc: 'BANNED U
 
 
 # Creat clothing categories
-Clothing.find_or_create_by_name(name: 'Electronics', desc: 'Electronics')
-Clothing.find_or_create_by_name(name: 'Gorden Supplies', desc: 'Gorden Supplies')
-Clothing.find_or_create_by_name(name: 'Household Goods', desc: 'Household Goods')
-Clothing.find_or_create_by_name(name: 'Toys', desc: 'Toys')
+Category.find_or_create_by_name(name: 'Clothings', desc: 'Clothings')
+Category.find_or_create_by_name(name: 'Electronics', desc: 'Electronics')
+Category.find_or_create_by_name(name: 'Gorden Supplies', desc: 'Gorden Supplies')
+Category.find_or_create_by_name(name: 'Household Goods', desc: 'Household Goods')
+Category.find_or_create_by_name(name: 'Toys', desc: 'Toys')
 
 # Creat Size categories
 Size.find_or_create_by_name(name: '0-2', desc: '0-2')

@@ -1,0 +1,25 @@
+<h3>New Circle</h3>
+
+<%= form_for(@circle, url: create_circle_url, class: 'form-horizontal') %>
+
+  <div class="form-group">
+    <label class="control-label">Name</label>
+    <%= f.text_field :name, :class=> 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label">Zip</label>
+    <%= f.text_field :zipcode, :class=> 'form-control' %>
+  </div>  
+  
+  <div class="form-group">
+    <label class="control-label">City</label>
+    <%= f.text_field :city, :class=> 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">State</label>
+    <%= f.text_field :state, :class=> 'form-control' %>
+  </div>
+
+<% end %>

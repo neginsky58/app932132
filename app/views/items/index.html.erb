@@ -1,20 +1,4 @@
-<div class="items-all-page">
-  <br/>
-  <div class="col-md-4">
-    <div class="form-group thumbnail">
-      <%= image_tag 'items/no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
-    </div>
-    <div class="form-group">
-      <input type="form-control" value="$50.00" />
-    </div>
-    <div class="form-group">
-      <a class="btn btn-default">Mine</a>
-      <a class="btn btn-warning">Make Offer</a>
-    </div>
-  </div>
 
-
-  <div class="col-md-8">
-  </div>
-
-</div>
+<% @items.each do |item| %>
+  <%= render 'item', :item=>item %>
+<% end %>

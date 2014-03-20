@@ -1,6 +1,4 @@
 class AdminController < ApplicationController
-  
-
   def new
     @admin = Admin.new    
     
@@ -38,13 +36,35 @@ class AdminController < ApplicationController
 
     @users = User.all
     respond_to do |format|
-      format.html { render :layout => 'admin' }
+      format.html
       format.json { render json: @users }
     end
   end
 
   def circles
+    @circles = Circle.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @circles }
+    end
   end
+
+  def new_circle
+    @circle = Circle.new
+    respond_to do |format|
+      format.html
+      format.json { render json: @circles }
+    end
+  end
+
+  def create_circle
+    @circle = Circle.new(circle_params)
+    respond_to do |format|
+      format.html { redirect_to action: 'circles' }
+      format.json { render json: @circles }
+    end
+  end
+
 
   def settings
   end
@@ -54,6 +74,12 @@ class AdminController < ApplicationController
 
   def current_admin_user
     return session[:admin_user]    
+  end
+
+  def destroy
+    @circle = Circle.find(params[:id])
+    @circle.destroy
+    redirect_to action: 'index'
   end
 
 end

@@ -1,0 +1,48 @@
+<div class="form-horizontal item-block">
+  
+  <div class="col-md-3">
+    <div class="form-group thumbnail">
+      <%= image_tag 'items/no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
+    </div>
+    <div class="form-group">
+      <input type="form-control" name="price" value="50.00" />
+    </div>
+    <div class="form-group">
+      <a class="btn btn-default">Mine</a>
+      <a class="btn btn-warning">Make Offer</a>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label class="control-label" for="search_word">Item Name</label>
+      </div>
+    </div>
+    <div class="col-md-8">    
+      <div class="form-group">
+        <label class="form-control"><%= item.name %></label>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label" for="description">Description</label>
+      </div>
+    </div>      
+    <div class="col-md-12">        
+      <div class="form-group">          
+        <p><%= item.desc %></p>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <label class="control-label">Manufacture link</label>
+    </div>
+    <div class="col-md-8">
+      <label class="form-control"><%= item.link %></label>           
+    </div>
+  
+    
+  </div>
+
+</div>

@@ -5,7 +5,7 @@ class CreateCircles < ActiveRecord::Migration
       t.string    :zipcode
       t.string    :city
       t.string    :state
-      t.string    :status
+      t.boolean   :status
       t.timestamps 
     end
   end

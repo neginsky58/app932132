@@ -16,7 +16,6 @@
  *= require_tree . 
  */
 
-/*@import 'app/fonts';*/
 
 header {
   margin: 10px 0;
@@ -25,6 +24,7 @@ header {
   border: 1px solid #eeeeee;
   border-radius: 4px;
   min-height: 400px !important;
+  padding: 0 2%;
 }
 .block-watchlist, .block-watchlist {
   border: 1px solid #eeeeee;
@@ -51,7 +51,11 @@ header {
   width: 100%;
   left: 0;
 }
-
+.item-block {
+  padding: 1%;
+  border: 1px solid #efefef;
+  margin: 5px 0;
+}
 
 
 

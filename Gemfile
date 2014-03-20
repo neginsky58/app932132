@@ -74,6 +74,7 @@ gem "koala"
 gem 'gmaps4rails'
 
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem "font-awesome-rails"
 
 gem 'thin'
 gem 'underscore-rails'

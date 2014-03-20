@@ -29,7 +29,9 @@ class CirclesController < ApplicationController
       redirect_to action: 'edit'
     end
   end
-
+  def destroy
+        
+  end
   private
   def circle_params
     params.require(:circle).permit(:name, :zipcode, :city, :state, :status)

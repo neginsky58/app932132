@@ -18,12 +18,24 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
   
   def update
+    @item = Item.find(params[:id])
+    if @item.update_attribute(item_params) 
+      redirect_to action: 'index'
+    else
+      redirect_to action: 'edit'
+    end
   end
 
-  def destroy
+  def destroy    
+    @item = Item.find(params[:id])
+    if @item 
+      @item.destroy
+    end
+    redirect_to action: 'index'    
   end
 
   private

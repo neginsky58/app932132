@@ -1,0 +1,72 @@
+/* 
+First, set the Bootstrap variables to your liking. Remember, you have access to these
+vars in any stylesheet you create, not just this one!
+http://twitter.github.com/bootstrap/customize.html#variables
+*/
+
+
+/* Colors */
+$defaultColor: #f1f1f1;
+$primaryColor: #308bb1;
+$secondaryColor: #333; 
+$successColor: #72b110;
+$warningColor: #faa834;
+$dangerColor: #e14386;
+
+$textColor: #555;
+$linkColor: darken($primaryColor, 5%);
+$linkColorHover: $textColor;
+$borderColor: #ddd;
+$lightBgColor: #f6f6f6;
+
+/* Root */
+$bodyBackground: $secondaryColor;
+$appMaxWidth: 1024px;
+
+/* Typography */
+$baseFontSize: 14px;
+$baseLineHeight: 22px;
+$sansFontFamily: "source_sans_proregular", "Lucida Grande", Tahoma, sans-serif;
+$headingsFontFamily: "source_sans_probold", "Lucida Grande", sans-serif;
+$headingsFontWeight: normal;
+
+
+/* Corners - for a design with no rounded corners, simply set the first var to 0 */
+$baseBorderRadius: 4px;
+$borderRadiusLarge: $baseBorderRadius*2;
+$borderRadiusSmall: $baseBorderRadius/2;
+$inputBorderRadius: $baseBorderRadius;
+
+/* Tables */
+$tableBorder: $borderColor;
+$tableBackgroundAccent: $lightBgColor;
+
+
+/* Dropdowns */
+$dropdownBackground: #fff;
+$dropdownBorder: #ddd;
+$dropdownLinkColor: $textColor;
+$dropdownLinkColorHover: #fff;
+$dropdownLinkBackgroundHover: $primaryColor;
+
+
+/* Alerts */
+$warningText: $textColor;
+$warningBackground: $lightBgColor;
+
+$errorText: darken( $dangerColor, 10% );
+$errorBackground: lighten( $dangerColor, 55% );
+
+$successText: darken( $successColor, 10% );
+$successBackground: lighten( $successColor, 45% );
+
+$infoText: $textColor;
+$infoBackground: #efefef;
+
+/* Don't touch this - just makes Bootstrap happy */
+$blue: $primaryColor; $grayLighter: $borderColor; $green: $successColor; $red: $dangerColor; $yellow: $warningColor; $orange: $warningColor; $pink: $primaryColor; $purple: $primaryColor;
+code { color: darken( $primaryColor, 10% ) !important }
+/* End don't touch this */
+
+/* Add any SASS variables YOU need below */
+$spacing: 16px;

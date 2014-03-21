@@ -30,7 +30,11 @@ Binbuds::Application.routes.draw do
   resources :users do 
       
   end
-  resources :favorites
+  resources :favorites do
+    collection do
+      post 'delete_selected'
+    end
+  end
   resources :admin
 
 

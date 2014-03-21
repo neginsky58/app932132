@@ -1,4 +1,6 @@
-<form role="form" class="form-horizontal block-attribute-list">
+
+<%= form_for(:favorite, remote: 'true', url: delete_selected_favorites_url, html: {:'data-type'=>'json', :multipart=> true, class: 'form-horizontal block-attribute-list', id: 'delete_favorite_form'}) do |f| %>
+
   <div class="form-group">
     <div class="col-md-12">
       <table class="table table-striped">
@@ -18,16 +20,16 @@
             <td><%= favorite.person_type.name %></td>
             <td><%= favorite.size.name %></td>
             <td><%= favorite.search_word %></td>
-            <td><input class="checkbox" type="checkbox" /></td>
+            <td><input class="checkbox" type="checkbox" name="favorite[id_<%= favorite.id %>]" /></td>
           </tr>
           <% end %>
-        </tbody>        
+        </tbody>                                                  
       </table>
     </div>
   </div>
   <div class="form-group">
     <div class="col-md-12">
-      <button class="btn btn-danger pull-right" type="submit">Delete Selected</button>
+      <button class="btn btn-danger pull-right delete-favorites" type="submit">Delete Selected</button>
     </div>    
   </div>
-</form>
+<% end %>

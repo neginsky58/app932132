@@ -25,4 +25,23 @@
 //= require_self
 // require binbuds
 //= require_tree .
+$(document).ready(function() {
 
+  $("#new_favorite").bind('ajax:success', function(xhr, data, status) {
+    console.log('ajax:success');
+    console.log(xhr);
+    content = '<tr><td>'+data.category+'</td><td>'+data.person_type+'</td><td>'
+    content = content + data.size+'</td><td>'+data.search_word+'</td><td>'
+    content = content + '<input class="checkbox" type="checkbox" name="favorite[id_' +data.id+']\"/></td></tr>';
+    $('.block-attribute-list table tbody').append(content);
+  });
+  $("#delete_favorite_form").bind('ajax:success', function(xhr, data, status){
+    console.log('deleted favorites');
+
+    $('input[type="checkbox"]').each(function(){
+      var par = $(this).parent().parent();
+      if(this.checked)
+        par.remove();      
+    });
+  });
+});

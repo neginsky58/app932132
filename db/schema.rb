@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140321003425) do
   create_table "items", force: true do |t|
     t.string   "name"
     t.text     "desc"
+    t.integer  "user_id"
     t.integer  "item_state_id"
     t.decimal  "price",          precision: 10, scale: 2
     t.string   "currency"

@@ -1,4 +1,5 @@
-<%= form_for(@favorite, url: user_favorites_url, html: { class: 'form-horizontal block-setting-form', role: 'form'}) do |f| %>
+<%#= form_for(@favorite, url: user_favorites_url, html: { class: 'form-horizontal block-setting-form', role: 'form'}) do |f| %>
+<%= form_for(@favorite, html: { class: 'form-horizontal block-setting-form', role: 'form'}) do |f| %>
   <div class="form-group">    
     <div class="col-md-2">
       <label class="control-label" for="search_word">Search Word</label>

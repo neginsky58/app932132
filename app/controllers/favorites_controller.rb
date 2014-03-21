@@ -10,9 +10,9 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(favorite_params)
     @favorite[:user_id] = current_user.id
     if @favorite.save
-      redirect_to action: 'index'
+      render :nothing => true
     else
-      redirect_to action: 'new'
+      render :nothing => true
     end
   end
 

@@ -7,8 +7,8 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    @favorite = Favorte.new(favorite_params)
-    @favorite[:user_id] = current_user.user_id
+    @favorite = Favorite.new(favorite_params)
+    @favorite[:user_id] = current_user.id
     if @favorite.save
       redirect_to action: 'index'
     else

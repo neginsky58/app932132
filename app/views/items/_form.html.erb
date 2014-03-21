@@ -91,7 +91,7 @@
         
       </div>
       <div class="col-md-4">        
-        <%= f.select :person_type_id, options_from_collection_for_select(Size.all, :id, :name, @item.person_type_id), {}, {:class=> 'form-control'} %>        
+        <%= f.select :size_id, options_from_collection_for_select(Size.all, :id, :name, @item.person_type_id), {}, {:class=> 'form-control'} %>        
       </div>
     </div>
     

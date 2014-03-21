@@ -12,49 +12,15 @@
           </tr>
         </thead>
         <tbody>
+          <% @favorites.each do |favorite| %>
           <tr>
-            <td>Clothing</td>
-            <td>Kids</td>
-            <td>Girls</td>
-            <td>4-6</td>
+            <td><%= favorite.category.name %></td>
+            <td><%= favorite.person_type.name %></td>
+            <td><%= favorite.size.name %></td>
+            <td><%= favorite.search_word %></td>
             <td><input class="checkbox" type="checkbox" /></td>
           </tr>
-          <tr>
-            <td>Toys</td>
-            <td>Outdoor</td>
-            <td></td>
-            <td></td>
-            <td><input class="checkbox" type="checkbox" /></td>
-          </tr>
-          <tr>
-            <td>Household</td>
-            <td>Kitchen</td>
-            <td>Organization</td>
-            <td></td>
-            <td><input class="checkbox" type="checkbox" /></td>
-          </tr>
-          <tr>
-            <td>Clothing</td>
-            <td>Womens</td>
-            <td>Formal</td>
-            <td>8-12</td>
-            <td><input class="checkbox" type="checkbox" /></td>
-          </tr>
-          <tr>
-            <td>Search</td>
-            <td>Kate Spade</td>
-            <td></td>
-            <td></td>
-            <td><input class="checkbox" type="checkbox" /></td>
-          </tr>
-          <tr>
-            <td>Search</td>
-            <td>Goach</td>
-            <td></td>
-            <td></td>
-            <td><input class="checkbox" type="checkbox" /></td>
-          </tr>
-
+          <% end %>
         </tbody>        
       </table>
     </div>

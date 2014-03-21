@@ -27,8 +27,11 @@ Binbuds::Application.routes.draw do
 
   resources :products
   resources :items
-  resources :users
+  resources :users do 
+    resources :favorites
+  end
   resources :admin
+
 
   root 'items#index'
 

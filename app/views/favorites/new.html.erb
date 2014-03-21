@@ -1,0 +1,48 @@
+<%= form_for(@favorite, html: { class: 'form-horizontal block-setting-form', role: 'form'}) do |f| %>
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="search_word">Search Word</label>
+    <div class="col-md-10">
+      <input id="search_word" class="form-control" type="text" placeholder="ex Kitchen Aid, Burley">
+    </div>
+  </div>
+  <div class="form-group">    
+    <div class="col-md-12">
+      <label class="control-label">Category</label>
+    </div>
+  </div>
+  <div class="form-group">      
+    <div class="col-md-4">
+      <select class="form-control">
+        <option>Clothings</option>
+        <option>Electronics</option>
+        <option>Garden Supplies</option>
+        <option>Household Goods</option>
+        <option>Toys</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select class="form-control">
+        <option>Womens</option>
+        <option>Men's</option>
+        <option>Kids - Girls</option>
+        <option>Kids - Boys</option>
+        <option>Unisex</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select class="form-control">
+        <option>Sizes</option>
+        <option>0-2</option>
+        <option>4-6</option>
+        <option>8-12</option>
+        <option>14-18</option>
+        <option>20+</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-12">
+      <button class="btn btn-primary pull-right" type="submit">Save as Favorite</button>
+    </div>
+  </div>
+<% end %>

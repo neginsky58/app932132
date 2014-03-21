@@ -5,6 +5,8 @@ class CreateItems < ActiveRecord::Migration
       t.string    :name
       t.text      :desc
 
+      t.integer   :user_id
+
       t.integer   :item_state_id, :deafult => 1
       t.decimal   :price, :precision => 10, :scale => 2
       t.string    :currency

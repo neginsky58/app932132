@@ -18,7 +18,7 @@ class CirclesController < ApplicationController
   end
 
   def index
-    @circles = Circle.all
+    @circles = Circle.all    
   end
 
   def update

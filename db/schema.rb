@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 20140321003425) do
     t.datetime "updated_at"
   end
 
+  create_table "clothings", force: true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "companies", force: true do |t|
     t.string   "facebook_id"
     t.string   "email"
@@ -119,7 +126,10 @@ ActiveRecord::Schema.define(version: 20140321003425) do
 
   create_table "photos", force: true do |t|
     t.integer  "item_id"
-    t.string   "file"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

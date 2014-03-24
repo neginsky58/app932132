@@ -1,10 +1,11 @@
 class AdminController < ApplicationController
+  layout 'admin'
   def new
     @admin = Admin.new    
     
     respond_to do |format|
       if current_admin_user
-        format.html { redirect_to users_admins_url }
+        format.html { redirect_to admin_all_users_url }
         format.json { render json: 'success' }
       else
         format.html { render layout: "admin_login" }
@@ -21,7 +22,7 @@ class AdminController < ApplicationController
       if !admin_user.nil? && admin_user.password == params[:admin]['password']
         flash[:success] = 'Successfully logged in as asmin user'
         session[:admin_user] = admin_user
-        format.html { redirect_to users_admins_url }
+        format.html { redirect_to admin_all_users_url }
         format.json { render json: 'success', status: :success }
       else
         flash[:danger] = 'Invalid user name or wrong password!'

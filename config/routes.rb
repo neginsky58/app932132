@@ -27,24 +27,20 @@ Binbuds::Application.routes.draw do
 
   resources :products
   resources :items
-  resources :users do 
-      
-  end
+  resources :users
+  resources :photos
   resources :favorites do
     collection do
       post 'delete_selected'
     end
   end
-  resources :admin
+  resources :admin, :as => 'admins'
 
 
   root 'items#index'
 
   get '/friends'    => 'users#friends'
   get '/settings'   => 'users#settings', as: 'settings'
-
-
-  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

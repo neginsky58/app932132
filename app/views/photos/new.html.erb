@@ -1,0 +1,9 @@
+<%#= form_for(@photo, :remote=>true, html: { :'data-type'=>'json', :multipart=> true, class: '', role: 'form', id: 'new_photo1'}) do |f| %>
+
+<%= form_for(@photo, :html => { }) do |f| %>
+
+  <%= f.file_field :file, class: 'default'  %>
+
+  <%= f.submit 'Submit' %>
+
+<% end %>

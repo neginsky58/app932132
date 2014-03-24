@@ -1,0 +1,7 @@
+<h3>All Photos</h3>
+
+<% @photos.each do |photo| %>  
+  <div class="thumbnail" style="width: 150px; height: 150px;">            
+    <%= image_tag photo.file.url, size: '150x150' %>
+  </div>
+<% end %>

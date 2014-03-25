@@ -45,7 +45,8 @@ Binbuds::Application.routes.draw do
 
   get '/friends'    => 'users#friends'
   get '/settings'   => 'users#settings', as: 'settings'
-
+  get '/join'       => 'users#join',     as: 'join'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

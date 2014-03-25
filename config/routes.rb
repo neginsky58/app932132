@@ -17,7 +17,11 @@ Binbuds::Application.routes.draw do
     # get '(*any)' => redirect { |params, request|
     #   URI.parse(request.url).tap { |uri| uri.host.sub!(/^admin\./i, '') }.to_s
     # }
-    resources :circles    
+    resources :circles do 
+      collection do 
+        post 'delete_selected'
+      end
+    end   
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

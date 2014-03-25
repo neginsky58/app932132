@@ -44,6 +44,7 @@ class AdminController < ApplicationController
 
   def circles
     @circles = Circle.all
+    @circle = Circle.new
     respond_to do |format|
       format.html
       format.json { render json: @circles }

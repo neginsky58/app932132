@@ -56,7 +56,9 @@ header {
   border: 1px solid #efefef;
   margin: 5px 0;
 }
-
+.circle-row {
+  cursor: pointer;
+}
 
 
 

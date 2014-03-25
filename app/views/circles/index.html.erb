@@ -1,4 +1,19 @@
+<div class="page-header">
+  <h3>Circles</h3>
+</div>
 
+<div class="row">
+
+  <form role="search" class="navbar-form">
+    <div class="form-group">
+      <input type="text" placeholder="Search" class="form-control">
+    </div>
+    <button class="btn btn-default" type="submit">Search</button>    
+    <a class="btn btn-default pull-right" href="<%= new_circle_url %>"><i class="fa fa-plus-square-o"></i>Create Circle</a>    
+  </form>
+
+</div>
+<%= form_for(:circle, urls: delete_selected_circles_url, remote: true, html: {:'data-type'=>'json', :multipart=> true, class: 'form-horizontal block-attribute-list', id: 'delete_circles_form'} ) do |f| %>
 <table class="table table-hover   table-bordered">
   <thead>
     <tr>
@@ -8,18 +23,24 @@
       <th>State</th>
       <th>Status</th>
       <th>Action</th>
+      <th>Edit</th>
     </tr>
   </thead>
   <tbody>
     <% @circles.each do |circle| %>
-    <tr>
+    <tr id="circle_<%= circle.id %>" class="circle-row">
       <td><%= circle.name %></td>
       <td><%= circle.zipcode %></td>
       <td><%= circle.city %></td>
       <td><%= circle.state %></td>
-      <td><%= circle.status %></td>
-      <td><input type="checkbox"/></td>
+      <td><%= circle.status ? 'Active' : 'Disabled'  %></td>
+      <td><input type="checkbox" name="circle[id_<%= circle.id %>]" /></td>
+      <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_circle_url(circle.id), class: '' %> </td>
     </tr>
     <% end %>    
   </tbody>
 </table>
+<div class="form-actions pull-right">
+  <button class="btn btn-danger" >Delete Selected</button>
+</div>
+<% end %>

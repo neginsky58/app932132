@@ -44,6 +44,11 @@ $(document).ready(function() {
         par.remove();      
     });
   });
+
+  $('.circle-row').click(function(){
+    var id = $(this).attr('id').substr(7);
+
+  });
 });
 
 

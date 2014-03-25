@@ -11,4 +11,8 @@ class UsersController < ApplicationController
     @favorites = Favorite.all
   end
 
+  def join
+
+  end
+
 end

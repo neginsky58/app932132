@@ -44,7 +44,15 @@ $(document).ready(function() {
         par.remove();      
     });
   });
-
+  
+  $("#delete_users_form").bind('ajax:success', function(xhr, data, status){
+    
+    $('input[type="checkbox"]').each(function(){
+      var par = $(this).parent().parent();
+      if(this.checked)
+        par.remove();      
+    });
+  });
   $('.circle-row').click(function(){
     var id = $(this).attr('id').substr(7);
 

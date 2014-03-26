@@ -1,11 +1,18 @@
-<h3>All Users</h3>
+<div class="page-header">
+  <h3>All Users</h3>
+</div>
 
-<form role="search" class="navbar-form navbar-left">
-  <div class="form-group">
-    <input type="text" placeholder="Search" class="form-control">
-  </div>
-  <button class="btn btn-default" type="submit">Search</button>  
-</form>
+<div class="row">
+  <form role="search" class="navbar-form">
+    <div class="form-group">
+      <input type="text" placeholder="Search" class="form-control">
+    </div>
+    <button class="btn btn-default" type="submit">Search</button>
+  </form>
+</div>
+
+<%= form_for(:user, url: delete_selected_users_admins_url, remote: true, html: {:'data-type'=>'json', :multipart=> true, class: 'form-horizontal', id: 'delete_users_form'} ) do |f| %>
+
 <table class="table table-hover   table-bordered">
   <thead>    
     <tr>
@@ -13,8 +20,9 @@
       <th>Email</th>
       <th>Referal</th>
       <th>Paid</th>
-      <th>Status</th>
-      <th></th>
+      <th>Status</th>      
+      <th>Edit</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -25,21 +33,13 @@
       <td>test ref</td>
       <td>Paid</td>
       <td>Active</td>
-      <td><input type="checkbox" /></td>
+      <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, '', class: '' %> </td>
+      <td><input type="checkbox" name="user[id_<%= user.id %>]" /></td>
     </tr>
     <% end %>    
   </tbody>
 </table>
-
-<h3>User Details</h3>
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#">Info</a></li>
-  <li><a href="#">Items</a></li>
-  <li><a href="#">Messages</a></li>
-  <li><a href="#">Preferences</a></li>
-  <li><a href="#">Circles</a></li>
-</ul>
-<%= render 'user_details_info' %>
-
-
-
+<div class="form-actions pull-right">
+  <button class="btn btn-danger" type="submit">Delete Selected</button>
+</div>
+<% end %>

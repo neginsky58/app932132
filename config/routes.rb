@@ -38,7 +38,11 @@ Binbuds::Application.routes.draw do
       post 'delete_selected'
     end
   end
-  resources :admin, :as => 'admins'
+  resources :admin, :as => 'admins' do
+    collection do
+      post 'delete_selected_users'
+    end
+  end
 
 
   root 'items#index'

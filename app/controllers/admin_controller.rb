@@ -78,6 +78,25 @@ class AdminController < ApplicationController
     return session[:admin_user]    
   end
 
+  def edit_user
+    @user = User.find(param[:id])
+    
+  end
+
+  def delete_selected_users
+    ary_ids = []
+    ids = params[:user]
+    ids.each do |key, value|
+      ary_ids << key
+      id = key[3..-1].to_i
+      User.destroy(id)      
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: ary_ids }
+    end
+  end
+
   def destroy
     @circle = Circle.find(params[:id])
     @circle.destroy

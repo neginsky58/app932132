@@ -21,9 +21,9 @@
       <th>Zip</th>
       <th>City</th>
       <th>State</th>
-      <th>Status</th>
-      <th>Action</th>
+      <th>Status</th>      
       <th>Edit</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -33,14 +33,14 @@
       <td><%= circle.zipcode %></td>
       <td><%= circle.city %></td>
       <td><%= circle.state %></td>
-      <td><%= circle.status ? 'Active' : 'Disabled'  %></td>
-      <td><input type="checkbox" name="circle[id_<%= circle.id %>]" /></td>
+      <td><%= circle.status ? 'Active' : 'Disabled'  %></td>      
       <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_circle_url(circle.id), class: '' %> </td>
+      <td><input type="checkbox" name="circle[id_<%= circle.id %>]" /></td>
     </tr>
     <% end %>    
   </tbody>
 </table>
 <div class="form-actions pull-right">
-  <button class="btn btn-danger" >Delete Selected</button>
+  <button class="btn btn-danger" type="submit">Delete Selected</button>
 </div>
 <% end %>

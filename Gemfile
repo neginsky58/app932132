@@ -82,7 +82,7 @@ gem 'simple_form'
 
 # Amazon S3 file upload
 gem "aws-sdk"
-gem "paperclip", "~> 3.0"
+gem "paperclip"
 
 # for heroku
 ruby '2.0.0'

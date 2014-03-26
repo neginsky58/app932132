@@ -1,7 +1,7 @@
-<%= form_for(@photo, :remote=>true, html: { :multipart=> true, class: '', role: 'form', id: 'new_photo1', enctype: 'multipart/form-data'}) do |f| %>
+<%#= form_for(@photo, :remote=>true, html: { :multipart=> true, class: '', role: 'form', id: 'new_photo1', enctype: 'multipart/form-data'}) do |f| %>
 
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-<%#= form_for(@photo, :html => { }) do |f| %>
+  <%#= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+<%= form_for(@photo, :html => { enctype: 'multipart/form-data' }) do |f| %>
 
   <%= f.file_field :file, class: 'default'  %>
 

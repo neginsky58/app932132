@@ -12,19 +12,17 @@ class PhotosController < ApplicationController
 
   def create
 
-    @photo = Photo.new(photo_params)
+    @photo = Photo.create(photo_params)
     respond_to do |format|
-      # if @photo.save
-      #   format.html { redirect_to action: 'index'}
-      #   format.json { render json: {success: true, url: @photo.file.url, photo_id: @photo.id } }
-      # else
-      #   format.html { redirect_to action: 'new' }
-      #   format.json { render json: {success: false } }
-      # end
-
-      
-      format.json { render json: {success: true, url: 'http://enprojo.s3.amazonaws.com/photos/files/000/000/004/original/94a0c452dad381f6c5ee0003815cff78.jpeg?1395812829', photo_id: '4' } }
-
+      if @photo
+        puts '====URL:=====', @photo.file.url
+        #format.html { redirect_to action: 'index'}
+        format.json { render json: {success: true, url: @photo.file.url, photo_id: @photo.id } }
+      else
+        #format.html { redirect_to action: 'new' }
+        format.json { render json: {success: false } }
+      end
+      # format.json { render json: {success: true, url: 'http://enprojo.s3.amazonaws.com/photos/files/000/000/004/original/94a0c452dad381f6c5ee0003815cff78.jpeg?1395812829', photo_id: '4' } }
     end    
   end
   
@@ -42,6 +40,6 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:file)
+    params.require(:photo).permit(:file, :file_file_name)
   end
 end

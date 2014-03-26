@@ -13,10 +13,27 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item[:user_id] = current_user.id
     if @item.save
+      if params[:thumb_photo_id_1].to_i >0        
+        photo = Photo.find(params[:thumb_photo_id_1].to_i)
+        photo.update_attribute(:item_id, @item.id)
+      end
+      if params[:thumb_photo_id_2].to_i >0        
+        photo = Photo.find(params[:thumb_photo_id_2].to_i)
+        photo.update_attribute(:item_id, @item.id)
+      end
+      if params[:thumb_photo_id_3].to_i >0        
+        photo = Photo.find(params[:thumb_photo_id_3].to_i)
+        photo.update_attribute(:item_id, @item.id)
+      end
+      if params[:thumb_photo_id_4].to_i >0        
+        photo = Photo.find(params[:thumb_photo_id_4].to_i)
+        photo.update_attribute(:item_id, @item.id)
+      end
+
       redirect_to action: 'index'
     else
       redirect_to action: 'new'
-    end    
+    end
   end
 
   def edit

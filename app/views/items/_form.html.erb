@@ -1,5 +1,5 @@
 <div class="col-md-4">
-  <div class="col-md-12 thumbnail thumbnail1">
+  <div class="col-md-12 thumbnail thumbnail1 thumbnail-active">
     <%= image_tag 'items/no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
   </div>
   <div class="col-md-4 thumbnail thumbnail2">
@@ -11,9 +11,14 @@
   <div class="col-md-4 thumbnail thumbnail4">
     <%= image_tag 'items/no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
   </div>
+  <%= hidden_field_tag :sel_thumbnail, '1' %>
+
+
   <%= form_for(@photo, :remote=>true, html: { :multipart=> true, class: '', role: 'form', id: 'new_photo_form', enctype: 'multipart/form-data'}) do |f| %>
 
     <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+
     <div class="col-md-12 upload-photo-progress-bar">
       <div class="row progress text-center">
         <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
@@ -35,7 +40,10 @@
 </div>
 
 <%= form_for(@item, html: {class: 'form-horizontal', role: "form"}) do |f| %>
-    
+    <%= hidden_field_tag :thumb_photo_id_1, '' %>
+    <%= hidden_field_tag :thumb_photo_id_2, '' %>
+    <%= hidden_field_tag :thumb_photo_id_3, '' %>
+    <%= hidden_field_tag :thumb_photo_id_4, '' %>    
     <div class="col-md-8">
       <div class="col-md-4">
         <div class="form-group">

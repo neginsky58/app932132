@@ -79,6 +79,10 @@ header {
 .upload-photo-progress-bar {
   display: none;
 }
+.post-page .thumbnail-active {
+  border-color: #66717C;
+
+}
 
 
 

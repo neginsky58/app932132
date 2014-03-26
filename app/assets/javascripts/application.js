@@ -67,38 +67,65 @@ $(document).ready(function() {
   var progress_value = 0;
   $('.upload-photo-input').on('change', function(){
     console.log($(this).val());
+
+    progress_value = 1;
+    $(".progress-bar").css('width',progress_value+'%');
     $('.upload-photo-progress-bar').show();
-    progress_value = 0;
+    
     var progresspump = setInterval(function(){    
       $(".progress-bar").css('width',progress_value+'%');
       if(progress_value>87){
         clearInterval(progresspump);
       }else{
-        progress_value = progress_value + 2;
+        progress_value = progress_value + 8;
       }
-    }, 10);   
+    }, 5);   
 
-    //$('form#new_photo_form').trigger('submit.rails');;  
     var form = $('form#new_photo_form');
-    // $.ajax({
-    //  type: "POST",
-    //  url: form.attr('action'),
-    //  contentType: form.attr( "enctype", "multipart/form-data" ),
-    //  dataType: "json",
-    //  data: form.serialize()  
-    //   }).done(function(js_data){
-    //    alert(js_data);
-    //  });
+
+    var eleProgressBar = $(".progress-bar");
+    var eleProgressBarBlock = $(".upload-photo-progress-bar");
+
+    var sel_thumb = $('input#sel_thumbnail').val();
+    var elePhotoId = "thumb_photo_id_" + sel_thumb;
+    var thumbnail_img = ".thumbnail"+sel_thumb+" img";
+
     $.ajax( {
       url: form.attr('action'),
       type: 'POST',
       data: new FormData( $('form#new_photo_form')[0] ),
       processData: false,
-      contentType: false
+      contentType: false,
+      complete: function(data){
+        eleProgressBar.css('width','100%');
+        eleProgressBarBlock.hide();
+        eleProgressBar.css('width','1%');
+
+        if(data.responseJSON.success){          
+          $(thumbnail_img).attr('src', data.responseJSON.url);
+          $('#'+elePhotoId).val(data.responseJSON.photo_id);          
+        } 
+        console.log(data.responseJSON.url);
+      }
     });
 
+  });
 
-
+  $('.thumbnail').on('click', function(){
+    $('.thumbnail').removeClass('thumbnail-active');
+    if($(this).hasClass('thumbnail1')){
+      $('input#sel_thumbnail').val('1');
+    }
+    if($(this).hasClass('thumbnail2')){
+      $('input#sel_thumbnail').val('2');
+    }
+    if($(this).hasClass('thumbnail3')){
+      $('input#sel_thumbnail').val('3');
+    }
+    if($(this).hasClass('thumbnail4')){
+      $('input#sel_thumbnail').val('4');
+    }
+    $(this).addClass('thumbnail-active');    
   });
 
  

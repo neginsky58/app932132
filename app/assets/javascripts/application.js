@@ -53,12 +53,56 @@ $(document).ready(function() {
         par.remove();      
     });
   });
-  $('.circle-row').click(function(){
-    var id = $(this).attr('id').substr(7);
+
+  $("#new_photo_form").bind('ajax:success', function(xhr, data, status){
+    console.log(data);    
+    $(".progress-bar").css('width','100%');
+    $(".progress-bar").hide();
 
   });
-});
 
+  $('.circle-row').click(function(){
+    var id = $(this).attr('id').substr(7);
+  });
+  var progress_value = 0;
+  $('.upload-photo-input').on('change', function(){
+    console.log($(this).val());
+    $('.upload-photo-progress-bar').show();
+    progress_value = 0;
+    var progresspump = setInterval(function(){    
+      $(".progress-bar").css('width',progress_value+'%');
+      if(progress_value>87){
+        clearInterval(progresspump);
+      }else{
+        progress_value = progress_value + 2;
+      }
+    }, 10);   
+
+    //$('form#new_photo_form').trigger('submit.rails');;  
+    var form = $('form#new_photo_form');
+    // $.ajax({
+    //  type: "POST",
+    //  url: form.attr('action'),
+    //  contentType: form.attr( "enctype", "multipart/form-data" ),
+    //  dataType: "json",
+    //  data: form.serialize()  
+    //   }).done(function(js_data){
+    //    alert(js_data);
+    //  });
+    $.ajax( {
+      url: form.attr('action'),
+      type: 'POST',
+      data: new FormData( $('form#new_photo_form')[0] ),
+      processData: false,
+      contentType: false
+    });
+
+
+
+  });
+
+ 
+});
 
 
 

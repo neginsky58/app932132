@@ -1,3 +1,22 @@
 http://getbootstrap.com/css/
 
 http://getbootstrap.com/css/#forms
+
+
+
+Demo #2
+
+     - User joins a circle
+          - user should only be abllowed to join if he/she has 1+ friends in the circle
+
+     - User Poss an item
+          - Assume user is a paying user (skip payment process for now)
+          - item should show up in "All" items stream
+          - demo photos upload
+               - Extra:  Please autosize to 1024x768
+          
+     - Item should be visible in 
+          - All
+          - My Items for sale
+
+We can increase the weekly limit to 45 hours per week once Demo 2 is complete.

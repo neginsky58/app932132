@@ -1,7 +1,8 @@
 development:
-  bucket: 'enprojo'
-  access_key_id: 'AKIAIZRGWFROH6Y2WLQA'
-  secret_access_key: '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'
+  bucket: 'BinBuds'
+  access_key_id: 'AKIAIAHJIRDGO4QOFUPA'
+  secret_access_key: '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'
+  
 
 production:
 

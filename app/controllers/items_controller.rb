@@ -1,7 +1,15 @@
 class ItemsController < ApplicationController
   
   def index
-    @items = Item.all
+    
+    @friends_fb_IDs = current_user.friends.map{|f| f['id']}
+
+    @friends_fb_IDs = ["100007787911484"]
+    # @member_IDs = User.find(:all, :conditions=>{:invited_user_id => manager_id}).collect(&:id)    
+    # @books = Book.where({:user_id => @member_IDs, :is_public => '1'})
+    # Item.joins(:user).where({:users=>{:circle_id=>1, :facebook_id=>"100007787911484"}})
+    # Item.joins(:user).where({:users=>{:circle_id=>1, :facebook_id=>["100007787911484"]}})
+    @items = Item.joins(:user).where({ :users => {:circle_id=>current_user.circle_id, :facebook_id => @friends_fb_IDs}})
   end
   
   def new
@@ -11,7 +19,7 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    @item[:user_id] = current_user.id
+    @item.user_id = current_user.id
     if @item.save
       if params[:thumb_photo_id_1].to_i >0        
         photo = Photo.find(params[:thumb_photo_id_1].to_i)
@@ -55,6 +63,10 @@ class ItemsController < ApplicationController
       @item.destroy
     end
     redirect_to action: 'index'    
+  end
+
+  def set_mine
+    item_id = params[:item_id]
   end
 
   private

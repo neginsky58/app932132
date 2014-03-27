@@ -1,1 +1,45 @@
-<h3>Join</h3>
+<div class="col-md-8">
+  <div class="page-header">
+    <h3>Please Join the Circle</h3>
+  </div>
+  <div class="table-responsive">
+    <table class="table border table-circles table-hover">
+      <thead>
+        
+        <td>Select</td>
+        <td>Circle Name</td>
+        <td>City</td>
+        <td>State</td>
+        <td>Zip Code</td>  
+        <td>Your Friends</td>
+      
+      </thead>
+      <tbody>
+        <% @circles.each do |circle| %>    
+          <tr class="circle-row" data-circle-id="<%= circle.id %>" >
+            <td class="sel-circle-icon"><i class="fa fa-circle-o"></i></td>
+            <td><%= circle.name %></td>
+            <td><%= circle.city %></td>
+            <td><%= circle.state %></td>
+            <td><%= circle.zipcode %></td>          
+            <td>13</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= form_for :circle, url: join_circle_users_url do |f| %>
+
+  <%= hidden_field_tag :circle_id, '' %>
+  <div class="form-group">    
+    <div class="col-md-11">
+      <button class="btn btn-success pull-right" type="submit"><i class="fa fa-sign-in"></i> JOIN</button>
+      <!-- <button class="btn btn-warning"><i class="fa fa-map-marker"></i>  Map View</button> -->    
+    </div>
+  </div>
+  <% end %>
+</div>
+<div class="col-md-4">
+  <div class="page-header"><h3>Location</h3></div>
+  <div id="map-canvas" class="thumbnail"></div>
+</div>

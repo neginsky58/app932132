@@ -31,7 +31,11 @@ Binbuds::Application.routes.draw do
 
   resources :products
   resources :items
-  resources :users
+  resources :users do 
+    collection do 
+      post 'join_circle'
+    end
+  end
   resources :photos
   resources :favorites do
     collection do

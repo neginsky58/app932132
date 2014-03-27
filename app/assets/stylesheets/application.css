@@ -81,9 +81,18 @@ header {
 }
 .post-page .thumbnail-active {
   border-color: #66717C;
-
 }
-
+.table-circles tr td {
+  line-height: 23px !important;
+  cursor: pointer;
+}
+.table-circles .sel-circle-icon {
+  font-size: 23px;
+}
+#map-canvas {
+  min-width: 250px;
+  min-height: 250px;  
+}
 
 
 

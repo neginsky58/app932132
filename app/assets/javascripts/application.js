@@ -60,10 +60,7 @@ $(document).ready(function() {
     $(".progress-bar").hide();
 
   });
-
-  $('.circle-row').click(function(){
-    var id = $(this).attr('id').substr(7);
-  });
+  
   var progress_value = 0;
   $('.upload-photo-input').on('change', function(){
     console.log($(this).val());
@@ -127,7 +124,13 @@ $(document).ready(function() {
     }
     $(this).addClass('thumbnail-active');    
   });
-
+  $('.table-circles .circle-row').on('click', function(){    
+    //$('.sel-circle-icon').remove();
+    $('.sel-circle-icon').html('<i class="fa fa-circle-o"></i>');    
+    //$(this).children('.sel-circle-icon').remove();
+    $(this).children('.sel-circle-icon').html('<i class="fa fa-dot-circle-o"></i>');    
+    $('#circle_id').val($(this).attr('data-circle-id'));
+  });
  
 });
 

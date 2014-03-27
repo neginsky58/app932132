@@ -77,7 +77,7 @@
           <div class="col-md-4">
             <div class="checkbox">
               <label>                
-                <%= f.check_box :is_negotiable, class: 'checkbox' %> Negotiable                
+                <%= f.check_box :is_negotiable, class: 'checkbox' %>Negotiable
               </label>
             </div>        
           </div>
@@ -132,5 +132,9 @@
         <%= f.text_field :link, class: 'form-control' %>        
       </div>
     </div>
-    <%= f.submit 'Submit', class: 'btn btn-default' %>  
+    <div class="form-group">
+      <div class="col-md-12 ">
+        <%= f.submit 'Submit', class: 'btn btn-default pull-right' %>  
+      </div>
+    </div>
 <% end %>

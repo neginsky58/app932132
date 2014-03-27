@@ -2,10 +2,15 @@
   <div class="col-md-3">    
     <div class="form-group thumbnail">
       <% ary_thumbnails = get_thumbnails(item) %>
-      <% ary_thumbnails.each do |photo| %>
-        <%= image_tag photo, class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
-      <% end %>
+      <% if ary_thumbnails.empty? %>
 
+        <%= image_tag 'no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
+        
+      <% else %>
+        <% ary_thumbnails.each do |photo| %>
+          <%= image_tag photo, class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
+        <% end %>
+      <% end %>
     </div>    
     <div class="form-group">
       <div class="col-md-6">

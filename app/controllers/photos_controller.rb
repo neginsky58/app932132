@@ -12,9 +12,9 @@ class PhotosController < ApplicationController
 
   def create
 
-    @photo = Photo.create(photo_params)
+    @photo = Photo.new(photo_params)
     respond_to do |format|
-      if @photo
+      if @photo.save
         puts '====URL:=====', @photo.file.url
         #format.html { redirect_to action: 'index'}
         format.json { render json: {success: true, url: @photo.file.url, photo_id: @photo.id } }

@@ -74,6 +74,28 @@ class ItemsController < ApplicationController
     end
   end
 
+  def set_mine
+    respond_to do |format|
+      item_id = params[:item_id]
+      item = Item.find(item_id)
+      item.update_attributes({bid_user_id: current_user.id, updated_at: DateTime.now})
+      format.json { render json: {success: true} }
+    end
+  end
+
+  def get_watch_list
+    respond_to do |format|
+      #@friends_fb_IDs = current_user.friends.map{|f| f['id']}
+      @friends_fb_IDs = ["100007787911484"]
+
+      @items = Item.joins(:user).where(['bid_user_id > 0']).where({:users => {:circle_id=>current_user.circle_id, :facebook_id => @friends_fb_IDs}})
+      ary_items = @items.map {|f| 
+        {id: f.id, name: f.name, price: f.price, user_name: f.user.name}
+      }
+      format.json { render json: {success: true, items: ary_items}}
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :desc, :price, :is_negotiable, :condition_id, :category_id, :person_type_id, :size_id, :link)

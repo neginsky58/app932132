@@ -156,7 +156,7 @@ $(document).ready(function() {
   });
 
 
-  
+
   $('.btn-set-mine').on('click', function(){        
     var this_elm = $(this)
     $.ajax({
@@ -168,6 +168,8 @@ $(document).ready(function() {
       this_elm.addClass('btn-success');
     });
   });
+
+  
 
 });
 

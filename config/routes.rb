@@ -57,6 +57,8 @@ Binbuds::Application.routes.draw do
   get '/settings'   => 'users#settings', as: 'settings'
   get '/join'       => 'users#join',     as: 'join'
   get '/set-mine/:item_id'  => 'items#set_mine',  as: 'set_mine_item'
+  post '/watchlist'  => 'items#get_watch_list', as: 'get_watch_list'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

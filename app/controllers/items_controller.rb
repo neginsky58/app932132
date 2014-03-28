@@ -83,7 +83,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def get_watch_list
+  def watchlist
     respond_to do |format|
       #@friends_fb_IDs = current_user.friends.map{|f| f['id']}
       @friends_fb_IDs = ["100007787911484"]
@@ -92,6 +92,7 @@ class ItemsController < ApplicationController
       ary_items = @items.map {|f| 
         {id: f.id, name: f.name, price: f.price, user_name: f.user.name}
       }
+      format.html { render :layout => false  }
       format.json { render json: {success: true, items: ary_items}}
     end
   end

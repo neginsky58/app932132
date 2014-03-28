@@ -4,15 +4,17 @@ $(document).ready(function() {
             $.ajax({
                 url: '/watchlist',
                 type: "POST",
-                dataType: 'json',
+                //dataType: 'json',
                 data: {
                     'message': 'message'
                 },
-                success: function(msg){
-                    console.log(msg.success);
-                    for(i = 0; i<msg.items.length; i++){
-                        console.log(msg.items[i].name);    
-                    }
+                success: function(data){
+                    // console.log(msg.success);
+                    // for(i = 0; i<msg.items.length; i++){
+                    //     console.log(msg.items[i].name);    
+                    // }
+                    
+                    $('.watchlist-content').html(data);
                     
                 },
                 error: function(xhr, status){

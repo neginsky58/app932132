@@ -1,0 +1,17 @@
+<% @items.to_enum.with_index(1) do |item, i| %>
+
+  <% if i == 1 
+        place = '1st'
+      elsif i ==2 
+        place = '2nd'
+      elsif i == 3
+        place = '3rd'
+      else
+        place = i.to_s + 'th'
+      end
+  %>
+
+<a type="button" class="btn btn-success col-md-12"> <%= item.user.name%> <%=place%> Anytown, IN     <%= number_to_currency(item.price)%></a>
+  
+
+<% end %>

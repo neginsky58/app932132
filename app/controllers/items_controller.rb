@@ -66,7 +66,12 @@ class ItemsController < ApplicationController
   end
 
   def set_mine
-    item_id = params[:item_id]
+    respond_to do |format|
+      item_id = params[:item_id]
+      item = Item.find(item_id)
+      item.update_attributes({bid_user_id: current_user.id, updated_at: DateTime.now})
+      format.json { render json: {success: true} }
+    end
   end
 
   private

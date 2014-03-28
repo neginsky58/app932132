@@ -1,27 +1,33 @@
 <div class="col-md-12 form-horizontal item-block">  
   <div class="col-md-3">    
-    <div class="form-group thumbnail">
+    <div class="form-group thumbnail thumbnail-<%=item.id%>">
       <% ary_thumbnails = get_thumbnails(item) %>
       <% if ary_thumbnails.empty? %>
 
         <%= image_tag 'no_image.jpg', class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
         
       <% else %>
-        <% ary_thumbnails.each do |photo| %>
-          <%= image_tag photo, class: 'img-responsive center-block', style: 'width: 100%;height:100%;' %>
+        <% ary_thumbnails.to_enum.with_index(1) do |photo, i| %>
+          
+          <% 
+            img_style = 'inactive'
+            img_style="active" if i==1 
+          %>
+          <%= image_tag photo, class: 'img-responsive center-block '+ img_style, style: 'width: 100%;height:100%;' %>
         <% end %>
       <% end %>
     </div>    
     <div class="form-group">
-      <div class="col-md-6">
-        <button class="btn btn-default row">Mine</button>
+      <div class="col-md-6">    
+        <% btn_style = (item.bid_user_id == current_user.id) ? 'btn-success' : 'btn-default' %>    
+        <button class="btn <%=btn_style%> row btn-set-mine" action="<%= set_mine_item_url(item.id) %>">Mine</button>        
       </div>
       <div class="col-md-6 pull-right">
-        <div class="row">
-          <button class="btn btn-default col-md-6">
+        <div class="row">          
+          <button class="btn btn-default col-md-6 btn-img-preview" data-item-id="<%= item.id%>">
             <i class="fa fa-arrow-left"></i>          
           </button>
-          <button class="btn btn-default col-md-6">
+          <button class="btn btn-default col-md-6 btn-img-next"  data-item-id="<%= item.id%>">
             <i class="fa fa-arrow-right"></i>
           </button>
         </div>
@@ -29,9 +35,14 @@
     </div>
 
     <div class="form-group">      
-      <button class="btn btn-warning col-md-6">Make Offer</button>
-      <div class="col-md-6">              
-        <label class="row form-control pull-right">50.00</label>
+      <button class="btn btn-warning col-md-5">Make Offer</button>
+      <div class="col-md-7"> 
+        <% if item.is_negotiable %>             
+        <input class="row form-control pull-right" value="<%= number_to_currency(item.price) %>" />
+
+        <% else %>
+        <label class="row form-control pull-right"><%= number_to_currency(item.price) %></label>
+        <% end %>
       </div>
     </div>
   

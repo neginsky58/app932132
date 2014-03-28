@@ -30,7 +30,9 @@ Binbuds::Application.routes.draw do
   # You can have the root of your site routed with "root"
 
   resources :products
-  resources :items
+  resources :items do 
+
+  end
   resources :users do 
     collection do 
       post 'join_circle'
@@ -54,7 +56,7 @@ Binbuds::Application.routes.draw do
   get '/friends'    => 'users#friends'
   get '/settings'   => 'users#settings', as: 'settings'
   get '/join'       => 'users#join',     as: 'join'
-  
+  get '/set-mine/:item_id'  => 'items#set_mine',  as: 'set_mine_item'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

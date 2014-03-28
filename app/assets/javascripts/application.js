@@ -124,6 +124,7 @@ $(document).ready(function() {
     }
     $(this).addClass('thumbnail-active');    
   });
+  
   $('.table-circles .circle-row').on('click', function(){    
     //$('.sel-circle-icon').remove();
     $('.sel-circle-icon').html('<i class="fa fa-circle-o"></i>');    
@@ -131,7 +132,43 @@ $(document).ready(function() {
     $(this).children('.sel-circle-icon').html('<i class="fa fa-dot-circle-o"></i>');    
     $('#circle_id').val($(this).attr('data-circle-id'));
   });
- 
+  $('.item-block .btn-img-preview').on('click', function(){
+    var css_thumbnail = ".thumbnail-" + $(this).attr("data-item-id");
+    var img_elm = $(css_thumbnail+" img.active");  
+    console.log(img_elm.prev('img'));
+    if(img_elm.prev('img').length > 0){
+      img_elm.removeClass('active');
+      img_elm.addClass('inactive');    
+      img_elm.prev('img').removeClass('inactive');
+      img_elm.prev('img').addClass('active');
+    }
+  });
+  $('.item-block .btn-img-next').on('click', function(){
+    var css_thumbnail = ".thumbnail-" + $(this).attr("data-item-id");
+    var img_elm = $(css_thumbnail+" img.active"); 
+    console.log(img_elm.next('img'));
+    if(img_elm.next('img').length > 0){
+      img_elm.removeClass('active');
+      img_elm.addClass('inactive');
+      img_elm.next('img').removeClass('inactive');
+      img_elm.next('img').addClass('active');
+    }
+  });
+
+
+  
+  $('.btn-set-mine').on('click', function(){        
+    var this_elm = $(this)
+    $.ajax({
+      url: $(this).attr('action'), //sumbits it to the given url of the form      
+      dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function(json){
+      console.log('success');
+      this_elm.removeClass('btn-default');
+      this_elm.addClass('btn-success');
+    });
+  });
+
 });
 
 

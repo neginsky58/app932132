@@ -56,6 +56,12 @@ header {
   border: 1px solid #efefef;
   margin: 5px 0;
 }
+.item-block .thumbnail .inactive {
+  display: none;
+}
+.item-block .thumbnail .active {
+  display: block;
+}
 .circle-row {
   cursor: pointer;
 }

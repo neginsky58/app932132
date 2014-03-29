@@ -94,7 +94,8 @@ Binbuds::Application.routes.draw do
 
   get '/friends'    => 'users#friends'
   get '/settings'   => 'users#settings', as: 'settings'
-  get '/join'       => 'users#join',     as: 'join'
+  post '/join'       => 'users#join',     as: 'join'
+  get '/join'       => 'users#join'
   get '/set-mine/:item_id'  => 'items#set_mine',  as: 'set_mine_item'
   post '/watchlist'  => 'items#watchlist', as: 'watchlist'
   post '/saleslist'  => 'items#saleslist', as: 'saleslist'

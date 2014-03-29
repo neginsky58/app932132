@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   
   # protect_from_forgery with: :exception
 
+  skip_before_filter :verify_authenticity_token
+  before_filter :request_permissions
+
+  def request_permissions
+      redirect_to "/users/auth/facebook" unless current_user
+  end
+
+
   layout :layout_by_resource
 
   protected
@@ -15,4 +23,8 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
+
+
+
+
 end

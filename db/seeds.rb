@@ -58,4 +58,10 @@ Condition.find_or_create_by_value(value: 3, name: "GENUSED", desc: "Minor signs 
 Condition.find_or_create_by_value(value: 4, name: "WORN", desc: "Scratched, pilling, dinged, may have holes")
 
 
+## Create Circles   
+Circle.find_or_create_by_zipcode(zipcode: '61259', name: 'Illinois City', city: 'Illinois', state: 'IL', status: true)
+Circle.find_or_create_by_zipcode(zipcode: '10007', name: 'New York City', city: 'New York', state: 'NY', status: true)
+Circle.find_or_create_by_zipcode(zipcode: '10432', name: 'Los Angeles City', city: 'Los Angeles', state: 'LA', status: true)
+Circle.find_or_create_by_zipcode(zipcode: '20432', name: 'San Diego City', city: 'San Diego', state: 'SD', status: true)
+
 

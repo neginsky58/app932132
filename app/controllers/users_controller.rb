@@ -1,8 +1,7 @@
 
-
-
 class UsersController < ApplicationController
-
+  before_filter :authenticate_user!
+  
   def friends
     @friends = current_user.friends.map{|f| f[:picture] = f['picture']['data']['url']; f}
   end

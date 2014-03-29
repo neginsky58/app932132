@@ -34,7 +34,10 @@ Binbuds::Application.routes.draw do
 
   resources :products
   resources :items do 
-
+    collection do
+      get 'mylist'
+      get 'whatsnew'
+    end
   end
   resources :users do 
     collection do 
@@ -87,7 +90,7 @@ Binbuds::Application.routes.draw do
   # end
 
 
-  root 'items#index'
+  root 'users#join'
 
   get '/friends'    => 'users#friends'
   get '/settings'   => 'users#settings', as: 'settings'

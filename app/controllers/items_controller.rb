@@ -1,8 +1,20 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_user!
-  def index    
-    friends_fb_IDs = session[:friends_ids]
-    
+  def mylist        
+    @items = Item.where(:user_id=>current_user.id)
+  end
+  
+  def whatsnew
+    friends_fb_IDs = current_user.friends.map{|f| f['id']}
+    @items = Item.joins(:user).where({ :users => {:circle_id=>current_user.circle_id, :facebook_id => friends_fb_IDs}}).limit(5)    
+  end
+
+  def index
+    #friends_fb_IDs = session[:friends_ids]
+    #session[:friends_ids] = current_user.friends.map{|f| f['id']}
+
+    friends_fb_IDs = current_user.friends.map{|f| f['id']}
+
     #friends_fb_IDs = ["100007787911484"]
     # @member_IDs = User.find(:all, :conditions=>{:invited_user_id => manager_id}).collect(&:id)    
     # @books = Book.where({:user_id => @member_IDs, :is_public => '1'})
@@ -10,7 +22,7 @@ class ItemsController < ApplicationController
     # Item.joins(:user).where({:users=>{:circle_id=>1, :facebook_id=>["100007787911484"]}})
     @items = Item.joins(:user).where({ :users => {:circle_id=>current_user.circle_id, :facebook_id => friends_fb_IDs}})
   end
-  
+
   def new
     @item = Item.new
     @photo = Photo.new
@@ -66,10 +78,12 @@ class ItemsController < ApplicationController
   end
 
   def set_mine
-    respond_to do |format|
+    respond_to do |format|      
       item_id = params[:item_id]
       item = Item.find(item_id)
-      item.update_attributes({bid_user_id: current_user.id, updated_at: DateTime.now})
+      if item.user_id != current_user.id
+        item.update_attributes({bid_user_id: current_user.id, updated_at: DateTime.now})
+      end
       format.json { render json: {success: true} }
     end
   end
@@ -89,6 +103,7 @@ class ItemsController < ApplicationController
 
         friends_fb_IDs = session[:friends_ids]
         #friends_fb_IDs = ["100007787911484"]
+        friends_fb_IDs = current_user.friends.map{|f| f['id']}
 
         @items = Item.joins(:user).where.not(user_id: current_user.id).where(['bid_user_id > 0']).where({:users => {:circle_id=>current_user.circle_id, :facebook_id => friends_fb_IDs}}).order('updated_at DESC').limit(6)
         ary_items = @items.map {|f| 
@@ -107,10 +122,11 @@ class ItemsController < ApplicationController
   def saleslist
     respond_to do |format|
       if current_user
-        friends_fb_IDs = session[:friends_ids]
+        #friends_fb_IDs = session[:friends_ids]
         #friends_fb_IDs = ["100007787911484"]
+        friends_fb_IDs = current_user.friends.map{|f| f['id']}
 
-        @items = Item.joins(:user).where(user_id: current_user.id).where(['bid_user_id > 0']).order('updated_at DESC').limit(6)
+        @items = Item.joins(:user).where.not(bid_user_id: current_user.id).where(user_id: current_user.id).where(['bid_user_id > 0']).order('updated_at DESC').limit(6)
         ary_items = @items.map {|f| 
           {id: f.id, name: f.name, price: f.price, user_name: f.user.name}
         }

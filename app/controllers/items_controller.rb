@@ -1,15 +1,14 @@
 class ItemsController < ApplicationController
-  
-  def index
+  before_filter :authenticate_user!
+  def index    
+    friends_fb_IDs = session[:friends_ids]
     
-    @friends_fb_IDs = current_user.friends.map{|f| f['id']}
-
-    @friends_fb_IDs = ["100007787911484"]
+    #friends_fb_IDs = ["100007787911484"]
     # @member_IDs = User.find(:all, :conditions=>{:invited_user_id => manager_id}).collect(&:id)    
     # @books = Book.where({:user_id => @member_IDs, :is_public => '1'})
     # Item.joins(:user).where({:users=>{:circle_id=>1, :facebook_id=>"100007787911484"}})
     # Item.joins(:user).where({:users=>{:circle_id=>1, :facebook_id=>["100007787911484"]}})
-    @items = Item.joins(:user).where({ :users => {:circle_id=>current_user.circle_id, :facebook_id => @friends_fb_IDs}})
+    @items = Item.joins(:user).where({ :users => {:circle_id=>current_user.circle_id, :facebook_id => friends_fb_IDs}})
   end
   
   def new
@@ -45,7 +44,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])    
+    @item = Item.find(params[:id])   
+    @photo = Photo.new
   end
   
   def update
@@ -85,18 +85,45 @@ class ItemsController < ApplicationController
 
   def watchlist
     respond_to do |format|
-      #@friends_fb_IDs = current_user.friends.map{|f| f['id']}
-      @friends_fb_IDs = ["100007787911484"]
+      if current_user
 
-      @items = Item.joins(:user).where(['bid_user_id > 0']).where({:users => {:circle_id=>current_user.circle_id, :facebook_id => @friends_fb_IDs}})
-      ary_items = @items.map {|f| 
-        {id: f.id, name: f.name, price: f.price, user_name: f.user.name}
-      }
-      format.html { render :layout => false  }
-      format.json { render json: {success: true, items: ary_items}}
+        friends_fb_IDs = session[:friends_ids]
+        #friends_fb_IDs = ["100007787911484"]
+
+        @items = Item.joins(:user).where.not(user_id: current_user.id).where(['bid_user_id > 0']).where({:users => {:circle_id=>current_user.circle_id, :facebook_id => friends_fb_IDs}}).order('updated_at DESC').limit(6)
+        ary_items = @items.map {|f| 
+          {id: f.id, name: f.name, price: f.price, user_name: f.user.name}
+        }
+        format.html { render :layout => false  }
+        format.json { render json: {success: true, items: ary_items}}
+
+      else
+        format.html { render :layout => false  }
+        format.json { render json: {success: true, items: [] }}
+      end
+
     end
   end
+  def saleslist
+    respond_to do |format|
+      if current_user
+        friends_fb_IDs = session[:friends_ids]
+        #friends_fb_IDs = ["100007787911484"]
 
+        @items = Item.joins(:user).where(user_id: current_user.id).where(['bid_user_id > 0']).order('updated_at DESC').limit(6)
+        ary_items = @items.map {|f| 
+          {id: f.id, name: f.name, price: f.price, user_name: f.user.name}
+        }
+        format.html { render :layout => false  }
+        format.json { render json: {success: true, items: ary_items}}
+
+      else
+        format.html { render :layout => false  }
+        format.json { render json: {success: true, items: [] }}
+      end
+
+    end
+  end
   private
   def item_params
     params.require(:item).permit(:name, :desc, :price, :is_negotiable, :condition_id, :category_id, :person_type_id, :size_id, :link)

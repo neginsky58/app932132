@@ -8,5 +8,8 @@ module ItemsHelper
     end
     ary_thumbnails
   end
-
+  def get_username(user_id)
+    user = User.find(user_id)
+    user.name
+  end
 end

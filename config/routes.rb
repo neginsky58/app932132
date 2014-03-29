@@ -6,23 +6,26 @@ Binbuds::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_session
   end  
 
-  constraints(host: /^admin\./i) do
-    get '/login' => 'admin#new'
-    get '/all-users' => 'admin#users', as: 'admin_all_users'
-    get '/all-circles' => 'admin#circles', as: 'admin_all_circles'
-    get '/settings' => 'admin#settings', as: 'admin_settings'
-    get '/new_circle' => 'admin#new_circle', as: 'admin_new_circle'
-    post '/create_circle' => 'admin#create_circle', as: 'admin_create_circle'
+  # constraints(host: /^admin\./i) do
+  #   get '/login' => 'admin#new'
+  #   get '/all-users' => 'admin#users', as: 'admin_all_users'
+  #   get '/all-circles' => 'admin#circles', as: 'admin_all_circles'
+  #   get '/settings' => 'admin#settings', as: 'admin_settings'
+  #   get '/new_circle' => 'admin#new_circle', as: 'admin_new_circle'
+  #   post '/create_circle' => 'admin#create_circle', as: 'admin_create_circle'
 
-    # get '(*any)' => redirect { |params, request|
-    #   URI.parse(request.url).tap { |uri| uri.host.sub!(/^admin\./i, '') }.to_s
-    # }
-    resources :circles do 
-      collection do 
-        post 'delete_selected'
-      end
-    end   
-  end
+  #   # get '(*any)' => redirect { |params, request|
+  #   #   URI.parse(request.url).tap { |uri| uri.host.sub!(/^admin\./i, '') }.to_s
+  #   # }
+  #   resources :circles do 
+  #     collection do 
+  #       post 'delete_selected'
+  #     end
+  #   end   
+  # end
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -45,10 +48,43 @@ Binbuds::Application.routes.draw do
     end
   end
   resources :admin, :as => 'admins' do
+
+
     collection do
       post 'delete_selected_users'
     end
+   
   end
+
+  get '/admin2/login' => 'admin#new'
+  get '/admin2/all-users' => 'admin#users', as: 'admin_all_users'
+  get '/admin2/all-circles' => 'admin#circles', as: 'admin_all_circles'
+  get '/admin2/settings' => 'admin#settings', as: 'admin_settings'
+  get '/admin2/new_circle' => 'admin#new_circle', as: 'admin_new_circle'
+  post '/admin2/create_circle' => 'admin#create_circle', as: 'admin_create_circle'
+  
+  resources :circles do 
+    collection do 
+      post 'delete_selected'
+    end
+  end   
+  # namespace :admin2 do
+  #   get '/login' => 'admin#new'
+  #   get '/all-users' => 'admin#users', as: 'admin_all_users'
+  #   get '/all-circles' => 'admin#circles', as: 'admin_all_circles'
+  #   get '/settings' => 'admin#settings', as: 'admin_settings'
+  #   get '/new_circle' => 'admin#new_circle', as: 'admin_new_circle'
+  #   post '/create_circle' => 'admin#create_circle', as: 'admin_create_circle'
+
+  #   # get '(*any)' => redirect { |params, request|
+  #   #   URI.parse(request.url).tap { |uri| uri.host.sub!(/^admin\./i, '') }.to_s
+  #   # }
+  #   resources :circles do 
+  #     collection do 
+  #       post 'delete_selected'
+  #     end
+  #   end   
+  # end
 
 
   root 'items#index'
@@ -58,6 +94,7 @@ Binbuds::Application.routes.draw do
   get '/join'       => 'users#join',     as: 'join'
   get '/set-mine/:item_id'  => 'items#set_mine',  as: 'set_mine_item'
   post '/watchlist'  => 'items#watchlist', as: 'watchlist'
+  post '/saleslist'  => 'items#saleslist', as: 'saleslist'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

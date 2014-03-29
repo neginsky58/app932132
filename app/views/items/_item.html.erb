@@ -34,8 +34,14 @@
       </div>
     </div>
 
-    <div class="form-group">      
+    <div class="form-group">
+      <% if item.is_negotiable %>
       <button class="btn btn-warning col-md-5">Make Offer</button>
+      <% else %>
+        <div class="col-md-5">
+          <label class="control-label">Price:</label>
+        </div>
+      <% end %>
       <div class="col-md-7"> 
         <% if item.is_negotiable %>             
         <input class="row form-control pull-right" value="<%= number_to_currency(item.price) %>" />

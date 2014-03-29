@@ -79,7 +79,7 @@ Binbuds::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.default_url_options = { host: 'binbuds.herokuapp.com' }
-  config.action_mailer.asset_host = 'https://binbuds.herokuapp.com' }
+  config.action_mailer.asset_host = { host: 'binbuds.herokuapp.com' }
   
   #config.use_ssl = true
   

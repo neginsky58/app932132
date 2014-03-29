@@ -19,7 +19,7 @@
       end
     %>
 
-    <a type="button" class="btn <%= style %> col-md-12"> <%= item.user.name%>  <%=place%>  <%=item.name%> <%= number_to_currency(item.price)%></a>
+    <a type="button" class="btn <%= style %> col-md-12"> <%= get_username(item.bid_user_id) %>  <%=place%>  <%=item.name%> <%= number_to_currency(item.price)%></a>
 
   <% end %>
 <% else %>

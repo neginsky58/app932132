@@ -236,7 +236,7 @@ Devise.setup do |config|
       {:scope => 'email, offline_access, xmpp_login', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
   else
     OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE 
-    config.omniauth :facebook, ENV["FACEBOOK_ID"], ENV["FACEBOOK_SECRET"], {:scope => 'email, offline_access, xmpp_login'}     
+    config.omniauth :facebook, ENV["DEV_FACEBOOK_ID"], ENV["DEV_FACEBOOK_SECRET"], {:scope => 'email, offline_access, xmpp_login'}     
   end
 
 

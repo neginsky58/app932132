@@ -66,7 +66,7 @@ header {
   cursor: pointer;
 }
 
-..fileUpload {
+.fileUpload {
   position: relative;
   overflow: hidden;
   margin: 10px;

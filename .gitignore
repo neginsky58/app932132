@@ -18,4 +18,6 @@
 # Ignore application configuration
 /config/application.yml
 /config/s3.yml
-/.env
+.env*
+config/.env
+config/database.yml

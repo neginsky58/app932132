@@ -20,3 +20,5 @@ Demo #2
           - My Items for sale
 
 We can increase the weekly limit to 45 hours per week once Demo 2 is complete.
+
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch s3.yml' --prune-empty --tag-name-filter cat -- --all
